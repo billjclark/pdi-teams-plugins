@@ -20,7 +20,7 @@
 *
 ******************************************************************************/
 
-package org.pentaho.di.sdk.marketplace.jobentries.slack;
+package org.pentaho.di.sdk.marketplace.jobentries.teams;
 
 import java.util.List;
 
@@ -58,27 +58,27 @@ import org.w3c.dom.Node;
  * 
  */
 @JobEntry(
-    id = "DemoJobEntry",
-    name = "DemoJobEntry.Name",
-    description = "DemoJobEntry.TooltipDesc",
+    id = "TeamsJobEntry",
+    name = "TeamsJobEntry.Name",
+    description = "TeamsJobEntry.TooltipDesc",
     image = "org/pentaho/di/sdk/samples/jobentries/demo/resources/demo.svg",
     categoryDescription = "i18n:org.pentaho.di.job:JobCategory.Category.Conditions",
-    i18nPackageName = "org.pentaho.di.sdk.marketplace.jobentries.slack",
-    documentationUrl = "DemoJobEntry.DocumentationURL",
-    casesUrl = "DemoJobEntry.CasesURL",
-    forumUrl = "DemoJobEntry.ForumURL"
+    i18nPackageName = "org.pentaho.di.sdk.marketplace.jobentries.teams",
+    documentationUrl = "TeamsJobEntry.DocumentationURL",
+    casesUrl = "TeamsJobEntry.CasesURL",
+    forumUrl = "TeamsJobEntry.ForumURL"
   )
-public class JobEntrySlack extends JobEntryBase implements Cloneable, JobEntryInterface {
+public class JobEntryTeams extends JobEntryBase implements Cloneable, JobEntryInterface {
 
   /**
    *  The PKG member is used when looking up internationalized strings.
    *  The properties file with localized keys is expected to reside in 
    *  {the package of the class specified}/messages/messages_{locale}.properties   
    */
-  private static Class<?> PKG = JobEntrySlack.class; // for i18n purposes $NON-NLS-1$
+  private static Class<?> PKG = JobEntryTeams.class; // for i18n purposes $NON-NLS-1$
 
   // This field holds the configured result of the job entry.
-  // It is configured in the JobEntrySlackDialog
+  // It is configured in the JobEntryTeamsDialog
   private boolean outcome;
 
   /**
@@ -87,7 +87,7 @@ public class JobEntrySlack extends JobEntryBase implements Cloneable, JobEntryIn
    * 
    * @param name the name of the new job entry
    */
-  public JobEntrySlack( String name ) {
+  public JobEntryTeams(String name ) {
     super( name, "" );
 
     // the default is to generate a positive outcome 
@@ -97,7 +97,7 @@ public class JobEntrySlack extends JobEntryBase implements Cloneable, JobEntryIn
   /**
    * No-Arguments constructor for convenience purposes.
    */
-  public JobEntrySlack() {
+  public JobEntryTeams() {
     this( "" );
   }
 
@@ -106,7 +106,7 @@ public class JobEntrySlack extends JobEntryBase implements Cloneable, JobEntryIn
    * @return the class name to use for the dialog for this job entry
    */
   public String getDialogClassName() {
-    return JobEntrySlackDialog.class.getName();
+    return JobEntryTeamsDialog.class.getName();
   }
 
   /**
@@ -120,7 +120,7 @@ public class JobEntrySlack extends JobEntryBase implements Cloneable, JobEntryIn
    * @return a deep copy of this
    */
   public Object clone() {
-    JobEntrySlack je = (JobEntrySlack) super.clone();
+    JobEntryTeams je = (JobEntryTeams) super.clone();
     return je;
   }
 
@@ -163,7 +163,7 @@ public class JobEntrySlack extends JobEntryBase implements Cloneable, JobEntryIn
       super.loadXML( entrynode, databases, slaveServers );
       outcome = "Y".equalsIgnoreCase( XMLHandler.getTagValue( entrynode, "outcome" ) );
     } catch ( Exception e ) {
-      throw new KettleXMLException( BaseMessages.getString( PKG, "Demo.Error.UnableToLoadFromXML" ), e );
+      throw new KettleXMLException( BaseMessages.getString( PKG, "Teams.Error.UnableToLoadFromXML" ), e );
     }
   }
 
@@ -180,7 +180,7 @@ public class JobEntrySlack extends JobEntryBase implements Cloneable, JobEntryIn
     try {
       rep.saveJobEntryAttribute( id_job, getObjectId(), "outcome", outcome );
     } catch ( KettleDatabaseException dbe ) {
-      throw new KettleException( BaseMessages.getString( PKG, "Demo.Error.UnableToSaveToRepository" ) + id_job, dbe );
+      throw new KettleException( BaseMessages.getString( PKG, "Teams.Error.UnableToSaveToRepository" ) + id_job, dbe );
     }
   }
 
@@ -199,7 +199,7 @@ public class JobEntrySlack extends JobEntryBase implements Cloneable, JobEntryIn
     try {
       outcome = rep.getJobEntryAttributeBoolean( id_jobentry, "outcome" );
     } catch ( KettleDatabaseException dbe ) {
-      throw new KettleException( BaseMessages.getString( PKG, "Demo.Error.UnableToLoadFromRepository" ) + id_jobentry, dbe );
+      throw new KettleException( BaseMessages.getString( PKG, "Teams.Error.UnableToLoadFromRepository" ) + id_jobentry, dbe );
     }
   }
 

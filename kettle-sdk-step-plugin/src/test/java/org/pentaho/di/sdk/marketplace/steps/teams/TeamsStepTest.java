@@ -71,7 +71,7 @@ public class TeamsStepTest {
   public void testInputNoFields() throws KettleException {
     TeamsStepMeta meta = new TeamsStepMeta();
     meta.setTeamsURL( "https://www.teams.com" );
-    meta.setMsgText("A Slack Message");
+    meta.setMsgText("A Teams Message");
     TransMeta tm = TransTestFactory.generateTestTransformation( new Variables(), meta, STEP_NAME );
 
     List<RowMetaAndData> result = TransTestFactory.executeTestTransformation( tm, TransTestFactory.INJECTOR_STEPNAME,

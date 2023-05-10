@@ -7,9 +7,9 @@
     <artifactId>kettle-sdk-plugin-parent</artifactId>
     <version>9.5.0.0-SNAPSHOT</version>
   </parent>
-  <artifactId>kettle-slack-step-plugin</artifactId>
+  <artifactId>kettle-teams-step-plugin</artifactId>
   <version>9.5.0.0-SNAPSHOT</version>
-  <name>Pentaho Data Integration Slack Step Plugin</name>
+  <name>Pentaho Data Integration Teams Step Plugin</name>
   <dependencies>
     <dependency>
       <groupId>org.pentaho</groupId>

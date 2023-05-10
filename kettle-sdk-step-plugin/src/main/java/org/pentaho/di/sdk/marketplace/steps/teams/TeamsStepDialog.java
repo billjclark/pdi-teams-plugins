@@ -50,7 +50,7 @@ import org.pentaho.di.trans.step.StepDialogInterface;
 //import com.pentaho.es.di.util.*;
 
 /**
- * This class is part of the Slack step plug-in implementation.
+ * This class is part of the Teams step plug-in implementation.
  * It demonstrates the basics of developing a plug-in step for PDI.  
  *  
  * The demo step adds a new string field to the row stream and sets its
@@ -141,7 +141,7 @@ public class TeamsStepDialog extends BaseStepDialog implements StepDialogInterfa
     formLayout.marginWidth = Const.FORM_MARGIN;
     formLayout.marginHeight = Const.FORM_MARGIN;
     shell.setLayout( formLayout );
-    shell.setText( BaseMessages.getString( PKG, "Slack.Shell.Title" ) );
+    shell.setText( BaseMessages.getString( PKG, "Teams.Shell.Title" ) );
     int middle = props.getMiddlePct();
     int margin = Const.MARGIN;
 

@@ -20,7 +20,7 @@
 *
 ******************************************************************************/
 
-package org.pentaho.di.sdk.marketplace.jobentries.slack;
+package org.pentaho.di.sdk.marketplace.jobentries.teams;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
@@ -69,14 +69,14 @@ import org.pentaho.di.ui.trans.step.BaseStepDialog;
  * 
  */
 
-public class JobEntrySlackDialog extends JobEntryDialog implements JobEntryDialogInterface {
+public class JobEntryTeamsDialog extends JobEntryDialog implements JobEntryDialogInterface {
 
   /**
    *  The PKG member is used when looking up internationalized strings.
    *  The properties file with localized keys is expected to reside in 
    *  {the package of the class specified}/messages/messages_{locale}.properties   
    */
-  private static Class<?> PKG = JobEntrySlack.class; // for i18n purposes
+  private static Class<?> PKG = JobEntryTeams.class; // for i18n purposes
 
   // the text box for the job entry name
   private Text wName;
@@ -84,7 +84,7 @@ public class JobEntrySlackDialog extends JobEntryDialog implements JobEntryDialo
   private CCombo wOutcome;
 
   // the job entry configuration object
-  private JobEntrySlack meta;
+  private JobEntryTeams meta;
 
   // flag saving the changed status of the job entry configuration object
   private boolean changed;
@@ -97,13 +97,13 @@ public class JobEntrySlackDialog extends JobEntryDialog implements JobEntryDialo
    * @param rep      the repository currently connected to, if any
    * @param jobMeta    the description of the job the job entry belongs to
    */
-  public JobEntrySlackDialog( Shell parent, JobEntryInterface jobEntryInt, Repository rep, JobMeta jobMeta ) {
+  public JobEntryTeamsDialog(Shell parent, JobEntryInterface jobEntryInt, Repository rep, JobMeta jobMeta ) {
     super( parent, jobEntryInt, rep, jobMeta );
     // it is safe to cast the JobEntryInterface object to the object handled by this dialog
-    meta = (JobEntrySlack) jobEntryInt;
+    meta = (JobEntryTeams) jobEntryInt;
     // ensure there is a default name for new job entries
     if ( this.meta.getName() == null ) {
-      this.meta.setName( BaseMessages.getString( PKG, "Demo.Default.Name" ) );
+      this.meta.setName( BaseMessages.getString( PKG, "Teams.Default.Name" ) );
     }
   }
 
@@ -150,14 +150,14 @@ public class JobEntrySlackDialog extends JobEntryDialog implements JobEntryDialo
     formLayout.marginHeight = Const.FORM_MARGIN;
 
     shell.setLayout( formLayout );
-    shell.setText( BaseMessages.getString( PKG, "Demo.Shell.Title" ) );
+    shell.setText( BaseMessages.getString( PKG, "Teams.Shell.Title" ) );
 
     int middle = props.getMiddlePct();
     int margin = Const.MARGIN;
 
     // Job entry name line
     Label wlName = new Label( shell, SWT.RIGHT );
-    wlName.setText( BaseMessages.getString( PKG, "Demo.JobEntryName.Label" ) );
+    wlName.setText( BaseMessages.getString( PKG, "Teams.JobEntryName.Label" ) );
     props.setLook( wlName );
     FormData fdlName = new FormData();
     fdlName.left = new FormAttachment( 0, 0 );
@@ -175,7 +175,7 @@ public class JobEntrySlackDialog extends JobEntryDialog implements JobEntryDialo
 
     // Outcome
     Label wlOutcome = new Label( shell, SWT.RIGHT );
-    wlOutcome.setText( BaseMessages.getString( PKG, "Demo.Outcome.Label" ) );
+    wlOutcome.setText( BaseMessages.getString( PKG, "Teams.Outcome.Label" ) );
     props.setLook( wlOutcome );
     FormData fdlOutcome = new FormData();
     fdlOutcome.left = new FormAttachment( 0, 0 );

@@ -20,7 +20,7 @@
 *
 ******************************************************************************/
 
-package org.pentaho.di.sdk.marketplace.jobentries.slack;
+package org.pentaho.di.sdk.marketplace.jobentries.teams;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -37,11 +37,11 @@ import org.pentaho.di.core.Result;
 import org.pentaho.di.core.annotations.JobEntry;
 import org.pentaho.di.i18n.BaseMessages;
 
-public class JobEntrySlackTest {
+public class JobEntryTeamsTest {
 
   @Test
 	public void testJobEntry(){
-		JobEntrySlack m = new JobEntrySlack( "Test Entry" );
+		JobEntryTeams m = new JobEntryTeams( "Test Entry" );
 		Result r = new Result();
 
 		// execute with desired outcome: false
@@ -57,7 +57,7 @@ public class JobEntrySlackTest {
 
   @Test
   public void testAnnotations() {
-    JobEntry jobEntryAnnotation = JobEntrySlack.class.getAnnotation( JobEntry.class );
+    JobEntry jobEntryAnnotation = JobEntryTeams.class.getAnnotation( JobEntry.class );
     assertNotNull( jobEntryAnnotation );
     assertFalse( Const.isEmpty( jobEntryAnnotation.id() ) );
     assertFalse( Const.isEmpty( jobEntryAnnotation.name() ) );
@@ -68,7 +68,7 @@ public class JobEntrySlackTest {
     assertFalse( Const.isEmpty( jobEntryAnnotation.documentationUrl() ) );
     assertFalse( Const.isEmpty( jobEntryAnnotation.casesUrl() ) );
     assertFalse( Const.isEmpty( jobEntryAnnotation.forumUrl() ) );
-    assertEquals( JobEntrySlack.class.getPackage().getName(), jobEntryAnnotation.i18nPackageName() );
+    assertEquals( JobEntryTeams.class.getPackage().getName(), jobEntryAnnotation.i18nPackageName() );
     hasi18nValue( jobEntryAnnotation.i18nPackageName(), jobEntryAnnotation.name() );
     hasi18nValue( jobEntryAnnotation.i18nPackageName(), jobEntryAnnotation.description() );
     hasi18nValue( jobEntryAnnotation.i18nPackageName(), jobEntryAnnotation.documentationUrl() );
@@ -89,7 +89,7 @@ public class JobEntrySlackTest {
 
   @Test
   public void testGetDialogClassName() {
-    JobEntrySlack m = new JobEntrySlack( "Test" );
+    JobEntryTeams m = new JobEntryTeams( "Test" );
     try {
       Class.forName( m.getDialogClassName() );
     } catch ( ClassNotFoundException e ) {

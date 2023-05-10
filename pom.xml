@@ -11,7 +11,7 @@
   <artifactId>kettle-sdk-plugin-parent</artifactId>
   <version>9.5.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>Pentaho Data Integration Slack Parent POM</name>
+  <name>Pentaho Data Integration Teams Parent POM</name>
   <modules>
     <!--
     <module>kettle-sdk-database-plugin</module>
