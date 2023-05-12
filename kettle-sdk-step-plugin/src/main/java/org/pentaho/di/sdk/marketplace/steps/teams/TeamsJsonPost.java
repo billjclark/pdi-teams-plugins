@@ -7,10 +7,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class TeamsJsonPost {
-
-    /*
-    https://graph.microsoft.com/v1.0/teams/80ebc59d-e1b7-40fb-a04b-822ced6b3534/channels/19%3a101ae0952b404b28bb56baf13afdf37b%40thread.tacv2/messages
-     */
     private final String serverUrl;
     private int responseCode;
 
@@ -21,8 +17,20 @@ public class TeamsJsonPost {
     public void post(String message) throws Exception {
         // Create a JSON object with the input string as its value
         JSONObject json = new JSONObject();
-        json.put("contentType", "html");
-        json.put("content", message);
+        json.put("@type", "MessageCard");
+        json.put("http://schema.org/extensions");
+        json.put("themeColor", "0076D7");
+        json.put("summary", "Spoon created a new task");
+
+        JSONObject sections = new JSONObject();
+        sections.put("activityTile", "Transformation Message");
+        sections.put("activitySubtitle", "Spoon created  new task");
+        sections.put("activityImage","https://teamsnodesample.azurewebsites.net/static/img/image5.png");
+        sections.put("markdown", true);
+
+        JSONObject facts = new JSONObject();
+        json.put("sections", sections);
+
 
         // Convert the JSON object to a string
         String jsonString = json.toString();
