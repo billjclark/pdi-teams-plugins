@@ -18,7 +18,7 @@ public class TeamsJsonPost {
         // Create a JSON object with the input string as its value
         JSONObject json = new JSONObject();
         json.put("@type", "MessageCard");
-        json.put("http://schema.org/extensions");
+        json.put("@context", "http://schema.org/extensions");
         json.put("themeColor", "0076D7");
         json.put("summary", "Spoon created a new task");
 
