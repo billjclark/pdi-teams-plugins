@@ -1,5 +1,7 @@
 package org.pentaho.di.sdk.marketplace.steps.teams;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
@@ -15,7 +17,7 @@ public class TeamsJsonPost {
         this.serverUrl = serverUrl;
     }
 
-    public void post(String message) throws Exception {
+    public void post(String message, long readLines) throws Exception {
         // Create a JSON object with the input string as its value
         JSONObject json = new JSONObject();
 
@@ -34,17 +36,30 @@ public class TeamsJsonPost {
 
         JSONArray facts = new JSONArray();
         JSONObject fact1 = new JSONObject();
-        fact1.put("name", "Assigned to");
+        fact1.put("name", "Transaction");
         fact1.put("value", "Unassigned");
         JSONObject fact2 = new JSONObject();
+        // Get the current date and time
+        LocalDateTime now = LocalDateTime.now();
+
+        // Define the format for displaying the date and time
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        // Format the date and time using the defined formatter
+        String formattedDateTime = now.format(formatter);
+
         fact2.put("name", "Transaction Date");
-        fact2.put("value","Mon May 01 2023 17:07:18 GMT-0700 (Pacific Daylight Time)");
+        fact2.put("value", formattedDateTime);
         JSONObject fact3 = new JSONObject();
         fact3.put("name", "Status");
         fact3.put("value","Error");
+        JSONObject fact4 = new JSONObject();
+        fact4.put("name", "Readlines");
+        fact4.put("value",readLines);
         facts.put(fact1);
         facts.put(fact2);
         facts.put(fact3);
+        facts.put(fact4);
 
         sections.put(new JSONObject().put("facts", facts));
 

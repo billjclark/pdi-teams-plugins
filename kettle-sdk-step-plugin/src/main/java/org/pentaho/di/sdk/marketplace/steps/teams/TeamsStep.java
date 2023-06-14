@@ -142,10 +142,10 @@ public class TeamsStep extends BaseStep implements StepInterface {
       // Add any step-specific initialization that may be needed here
       // Create a JsonHttpPost instance
       TeamsJsonPost teamsJsonPost = new TeamsJsonPost(meta.getTeamsURL());
-
+      logBasic("URL: " + meta.getTeamsURL());
       // Post a JSON object to the server with the message "Hello, world!"
       try {
-        teamsJsonPost.post(teamsError.toString());
+        teamsJsonPost.post(teamsError.toString(), getLinesRead());
       } catch (Exception e) {
         throw new KettleException(e);
       }

@@ -8,16 +8,12 @@ in your <user-home>/.m2 directory
 
 ## Overview
 
-This project contains a series of examples demonstrating various use-cases for extended and embedding PDI functionality.
+This project allows Microsoft Teams to be notified of status of Pentaho transformations and jobs.
 
-* PDI Transformation Step
-* PDI Job Entry
-* PDI Database Dialect
-* PDI Transformation Hop Partitioner
-* Embedded PDI Features
-  * Creating Jobs or Transformations in Java
-  * Executing Jobs or Transformations in Java
-  * Interacting with a Carte Web Server via APIs
+The messages have the following attributes:
+* Alert message
+* Time and date
+* Number of rows that reach the Teams step
 
 ## Getting Started
 
